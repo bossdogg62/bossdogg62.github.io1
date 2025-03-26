@@ -74,14 +74,14 @@
             text-align: center;
             color: white;
             position: relative;
-            padding-top: 120px; /* Adjusted padding to lower the header content */
+            padding-top: 120px;
         }
         .logo {
             position: absolute;
             top: 20px;
             left: 20px;
             font-family: 'Merriweather', serif;
-            font-size: 1.2em; /* Smaller logo */
+            font-size: 1.2em;
             color: white;
             text-decoration: none;
             z-index: 10;
@@ -91,7 +91,7 @@
         }
         header h1 {
             font-family: 'Merriweather', serif;
-            font-size: 4.5em; /* Slightly smaller header text */
+            font-size: 4.5em;
             margin: 0;
             animation: fadeIn 2s ease-in-out;
         }
@@ -103,18 +103,23 @@
         }
         .cta-button {
             display: inline-block;
-            background-color: #c8a97e;
+            background-color: #e74c3c; /* More vibrant color */
             color: white;
-            padding: 15px 30px;
+            padding: 20px 40px; /* Larger button */
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.5em; /* Larger text */
             border-radius: 5px;
             margin-top: 20px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             animation: fadeIn 4s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            text-transform: uppercase;
         }
         .cta-button:hover {
-            background-color: #b08c5e;
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         .trust-section {
             margin-top: 20px;
@@ -123,9 +128,32 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
         .trust-section strong {
-            color: #c8a97e;
+            color: #e74c3c;
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+        }
+        .trust-badge i {
+            margin-right: 5px;
+            font-size: 1.2em;
         }
         .container {
             max-width: 1200px;
@@ -145,7 +173,7 @@
             color: #555;
         }
         .highlight {
-            color: #c8a97e;
+            color: #e74c3c;
             font-weight: bold;
         }
         .benefits {
@@ -203,11 +231,50 @@
             font-weight: bold;
             margin-top: 20px;
             font-size: 1.2em;
-            color: #c8a97e;
+            color: #e74c3c;
+        }
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            display: block;
+            border: 3px solid #e74c3c;
         }
         .tally-form {
             margin: 0 auto;
             max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .value-props {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .value-prop {
+            display: flex;
+            align-items: center;
+            margin: 15px;
+            width: 45%;
+        }
+        .value-icon {
+            font-size: 2em;
+            color: #e74c3c;
+            margin-right: 15px;
+            min-width: 50px;
+        }
+        .value-text h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+        }
+        .value-text p {
+            margin: 0;
+            font-size: 1em;
         }
         footer {
             background-color: #333;
@@ -216,7 +283,7 @@
             padding: 40px 20px;
         }
         footer a {
-            color: #c8a97e;
+            color: #e74c3c;
             text-decoration: none;
             cursor: pointer;
         }
@@ -268,6 +335,14 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
@@ -275,6 +350,10 @@
                 font-size: 3em;
             }
             header p {
+                font-size: 1.2em;
+            }
+            .cta-button {
+                padding: 15px 30px;
                 font-size: 1.2em;
             }
             .benefits {
@@ -288,10 +367,14 @@
                 font-size: 1.2em;
             }
             .tally-form iframe {
-                height: 500px; /* Adjust height for mobile */
+                height: 500px;
+            }
+            .value-prop {
+                width: 100%;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <a href="/" class="logo">SellMyHomeExperts.com</a>
@@ -299,47 +382,88 @@
         <div>
             <h1>Sell Your House Fast</h1>
             <p>Need to sell fast without the unwanted calls or hassle? Let us help you get a fair cash offer quickly—no pressure, no stress.</p>
-            <a href="#contact" class="cta-button">Get Your Cash Offer Now</a>
+            <a href="#contact" class="cta-button pulse">Get Your Cash Offer Now</a>
             <div class="trust-section">
                 <p>We are <strong>100% consent-based</strong> and value your privacy.<strong>Your information is secure.</strong></p>
+                <div class="trust-badges">
+                    <div class="trust-badge"><i class="fas fa-shield-alt"></i> Secure Site</div>
+                    <div class="trust-badge"><i class="fas fa-lock"></i> Privacy Protected</div>
+                    <div class="trust-badge"><i class="fas fa-check-circle"></i> No Obligation</div>
+                </div>
             </div>
         </div>
     </header>
     <div class="container">
         <section>
             <h2>Why Choose SellMyHomeExperts.com?</h2>
-            <p>At <span class="highlight">SellMyHomeExperts.com</span>, we specialize in connecting sellers with buyers quickly and efficiently. Whether you're facing foreclosure, divorce, probate, or relocation, we make the process seamless. Here's how we help:</p>
+            <p>At <span class="highlight">SellMyHomeExperts.com</span>, we specialize in connecting sellers with buyers quickly and efficiently. Whether you're facing foreclosure, divorce, probate, or relocation, we make the process seamless.</p>
+            
+            <div class="value-props">
+                <div class="value-prop">
+                    <div class="value-icon"><i class="fas fa-home"></i></div>
+                    <div class="value-text">
+                        <h3>No Repairs Needed</h3>
+                        <p>We buy houses as-is, saving you time and money on renovations.</p>
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="value-text">
+                        <h3>Fast Closing</h3>
+                        <p>Close in as little as 7 days, or on your preferred timeline.</p>
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div class="value-text">
+                        <h3>Fair Cash Offers</h3>
+                        <p>Get a no-obligation, fair cash offer within 24 hours.</p>
+                    </div>
+                </div>
+                <div class="value-prop">
+                    <div class="value-icon"><i class="fas fa-file-signature"></i></div>
+                    <div class="value-text">
+                        <h3>No Hidden Fees</h3>
+                        <p>What we offer is what you get - no surprises.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="benefits">
                 <div class="benefit">
-                    <h3>No Repairs Needed</h3>
-                    <p>We buy houses as-is, so you don’t have to worry about costly repairs or renovations.</p>
+                    <h3>Facing Foreclosure?</h3>
+                    <p>We can help you avoid foreclosure and protect your credit with a fast sale.</p>
                 </div>
                 <div class="benefit">
-                    <h3>Fast Closing</h3>
-                    <p>Close in as little as 7 days, or on your timeline. We work at your pace.</p>
+                    <h3>Going Through Divorce?</h3>
+                    <p>Simplify the process by selling quickly and splitting the proceeds fairly.</p>
                 </div>
                 <div class="benefit">
-                    <h3>Fair Cash Offers</h3>
-                    <p>Get a no-obligation, fair cash offer within 24 hours. No hidden fees.</p>
+                    <h3>Inherited Property?</h3>
+                    <p>We make probate sales easy with no complications.</p>
                 </div>
             </div>
         </section>
-        <section id="contact">
-            <h2>Get Your Cash Offer Today</h2>
-            <p>Let <span class="highlight">SellMyHomeExperts.com</span> connect you with a buyer today. Fill out the form below, and we'll get back to you with a fair cash offer within 24 hours.</p>
-            <div class="tally-form">
-                <iframe data-tally-src="https://tally.so/embed/wbvMKZ?alignLeft=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1" frameborder="0" marginheight="0" marginwidth="0" title="Want to Sell Without the Hassle? Your information is Secure. Let’s find a solution."></iframe>
-            </div>
-        </section>
+        
         <section class="testimonials">
             <h2>What Our Clients Say</h2>
             <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Happy Client" class="testimonial-image">
                 <p>"I was facing foreclosure and didn't know what to do. SellMyHomeExperts.com connected me with a buyer and made the process seamless. Highly recommend!"</p>
-                <div class="author">- Jane D.</div>
+                <div class="author">- Jane D., Seattle, WA</div>
             </div>
             <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Happy Client" class="testimonial-image">
                 <p>"After my divorce, I needed to sell my house quickly. The team at SellMyHomeExperts.com was professional and closed in just 10 days. Thank you!"</p>
-                <div class="author">- John S.</div>
+                <div class="author">- John S., Portland, OR</div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Get Your Cash Offer Today</h2>
+            <p>Let <span class="highlight">SellMyHomeExperts.com</span> connect you with a buyer today. Fill out the simple form below, and we'll get back to you with a fair cash offer within 24 hours.</p>
+            <div class="tally-form">
+                <iframe data-tally-src="https://tally.so/embed/wbvMKZ?alignLeft=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1" frameborder="0" marginheight="0" marginwidth="0" title="Want to Sell Without the Hassle? Your information is Secure. Let's find a solution."></iframe>
             </div>
         </section>
     </div>
